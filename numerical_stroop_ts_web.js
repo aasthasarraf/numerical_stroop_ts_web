@@ -14,7 +14,7 @@ const { round } = util;
 // store info about the experiment session:
 let expName = 'numerical_stroop_ts_web';  // from the Builder filename that created this script
 let expInfo = {
-    'initials': '',
+    'name': '',
 };
 
 // Start code blocks for 'Before Experiment'
@@ -132,7 +132,7 @@ async function updateInfo() {
   
 
   
-  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["initials"]}_${expName}_${expInfo["date"]}`);
+  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["name"]}_${expName}_${expInfo["date"]}`);
   psychoJS.experiment.field_separator = '\t';
 
 
