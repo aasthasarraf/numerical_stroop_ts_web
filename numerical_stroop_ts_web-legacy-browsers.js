@@ -6,7 +6,7 @@
 // store info about the experiment session:
 let expName = 'numerical_stroop_ts_web';  // from the Builder filename that created this script
 let expInfo = {
-    'name': '',
+    'initials': '',
 };
 
 // Start code blocks for 'Before Experiment'
@@ -95,7 +95,7 @@ psychoJS.start({
     {'name': 'list_stim_what_number.xlsx', 'path': 'list_stim_what_number.xlsx'},
     {'name': 'list_stim_how_many.xlsx', 'path': 'list_stim_how_many.xlsx'},
     {'name': 'list_block_rows.xlsx', 'path': 'list_block_rows.xlsx'},
-    {'name': 'list_stim_trials_seq_4.xlsx', 'path': 'list_stim_trials_seq_4.xlsx'},
+    {'name': 'list_stim_trials_A5B5.xlsx', 'path': 'list_stim_trials_A5B5.xlsx'},
   ]
 });
 
@@ -124,7 +124,7 @@ async function updateInfo() {
   
 
   
-  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["name"]}_${expName}_${expInfo["date"]}`);
+  psychoJS.experiment.dataFileName = (("." + "/") + `data/${expInfo["initials"]}_${expName}_${expInfo["date"]}`);
   psychoJS.experiment.field_separator = '\t';
 
 
@@ -185,8 +185,8 @@ async function experimentInit() {
   number_font_size = 0.1;
   fixation_font_size = 0.08;
   prompt_font_size = 0.07;
-  duration_number = 1.75;
-  duration_fixation = 1.75;
+  duration_number = 2.0;
+  duration_fixation = 1.5;
   duration_response = ((duration_number + duration_fixation) - 0.1);
   congruent_total_accuracy = 0;
   skip_test = 1;
@@ -300,7 +300,7 @@ async function experimentInit() {
     units: undefined, 
     pos: [0, 0], draggable: false, height: number_font_size,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
+    color: new util.Color('yellow'),  opacity: undefined,
     depth: -1.0 
   });
   
@@ -326,7 +326,7 @@ async function experimentInit() {
     units: undefined, 
     pos: [0, 0.2], draggable: false, height: prompt_font_size,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
-    color: new util.Color('white'),  opacity: undefined,
+    color: new util.Color('yellow'),  opacity: undefined,
     depth: -4.0 
   });
   
@@ -848,6 +848,8 @@ function trials_loop_what_numberLoopEndIteration(scheduler, snapshot) {
           psychoJS.experiment.nextEntry(snapshot);
         }
         scheduler.stop();
+      } else {
+        psychoJS.experiment.nextEntry(snapshot);
       }
     return Scheduler.Event.NEXT;
     }
@@ -910,6 +912,8 @@ function trials_loop_how_manyLoopEndIteration(scheduler, snapshot) {
           psychoJS.experiment.nextEntry(snapshot);
         }
         scheduler.stop();
+      } else {
+        psychoJS.experiment.nextEntry(snapshot);
       }
     return Scheduler.Event.NEXT;
     }
@@ -963,7 +967,7 @@ function trials_mixed_loopLoopBegin(trials_mixed_loopLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: TrialHandler.importConditions(psychoJS.serverManager, 'list_stim_trials_seq_4.xlsx', list_of_rows),
+      trialList: TrialHandler.importConditions(psychoJS.serverManager, 'list_stim_trials_A5B5.xlsx', list_of_rows),
       seed: undefined, name: 'trials_mixed_loop'
     });
     psychoJS.experiment.addLoop(trials_mixed_loop); // add the loop to the experiment
@@ -1730,10 +1734,12 @@ function trial_mixedRoutineBegin(snapshot) {
     } catch(e) {
         stim2 = stim.toString(); // Fallback in case of error
     }
+    text_test.setColor(new util.Color(trial_colour));
     text_test.setText(stim2);
     key_resp_test.keys = undefined;
     key_resp_test.rt = undefined;
     _key_resp_test_allKeys = [];
+    text_trial_name.setColor(new util.Color(trial_colour));
     text_trial_name.setText(trial_name);
     psychoJS.experiment.addData('trial_mixed.started', globalClock.getTime());
     trial_mixedMaxDuration = null
